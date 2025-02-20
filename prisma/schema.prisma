@@ -17,11 +17,20 @@ model User {
   id String @id @default(cuid())
   name String
   email String @unique
-  password String
+  password String?
   avatarUrl String
-  role String // event_author || admin
+  role String @default("event_author")// event_author || admin
 
   events Event[]
+  sessions Session[]
+}
+
+model Session {
+  id String @id @default(cuid())
+  
+  // relation
+  userId String
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Event {

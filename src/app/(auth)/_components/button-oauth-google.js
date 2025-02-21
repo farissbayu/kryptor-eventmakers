@@ -1,12 +1,22 @@
+"use client";
+
 import { Button } from "@heroui/react";
-import React from "react";
+import React, { useActionState } from "react";
+import { continueWithGoogleAction } from "./action";
 
 export const ButtonOauthGoogle = () => {
+  const [_, formAction, pending] = useActionState(
+    continueWithGoogleAction,
+    null
+  );
+
   return (
-    <form>
+    <form action={formAction}>
       <Button
         className="w-full"
         variant="bordered"
+        type="submit"
+        isDisabled={pending}
         startContent={
           <svg
             xmlns="http://www.w3.org/2000/svg"

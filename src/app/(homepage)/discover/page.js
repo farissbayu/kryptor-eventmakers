@@ -1,6 +1,6 @@
 import { Button } from "@heroui/react";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import SectionCard from "./_components/sectionCard";
 
 export default function page() {
@@ -23,6 +23,13 @@ export default function page() {
         </div>
       </section>
       <section className="grid grid-cols-4 gap-5 ">
+        <SectionCard
+          id="1"
+          title="Jakarta | AI-Builder Co-working - 22 Feb"
+          datetime="Today , 06:00 PM "
+          location="Jakarta"
+          author="Ary"
+        />
         <SectionCard
           id="1"
           title="Jakarta | AI-Builder Co-working - 22 Feb"

@@ -10,8 +10,8 @@ export default async function layout({ children }) {
   return (
     <div>
       <Navbar isLogin={isLogin} />
-      <div className="flex min-h-screen justify-center items-center bg-gray-50 py-20">
-        <div className="container mx-auto text-center">{children}</div>
+      <div className="flex min-h-screen bg-gray-50">
+        <div className="p-5 mx-auto">{children}</div>
       </div>
     </div>
   );

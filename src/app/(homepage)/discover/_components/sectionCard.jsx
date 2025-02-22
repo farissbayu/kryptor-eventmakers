@@ -8,35 +8,34 @@ import {
   Divider,
   Skeleton,
 } from "@heroui/react";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import { useActionState, useEffect, useState } from "react";
 
-export default function SectionCard({ id, title, datetime, location, author }) {
-  const [isLoaded, setIsLoaded] = useState(false);
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+export default function SectionCard({
+  id,
+  title,
+  datetime,
+  location,
+  author,
+  isLoading,
+}) {
+  const eventDate = moment(datetime).calendar();
   return (
     <Link href={`/${id}`}>
       <Card className="max-w-[500px] shadow-sm">
-        <Skeleton className="rounded-lg" isLoaded={isLoaded}>
+        <Skeleton className="rounded-lg" isLoaded={!isLoading}>
           <div className="h-24 rounded-lg bg-default-300" />
         </Skeleton>
         <CardHeader>
-          <Skeleton isLoaded={isLoaded}>
+          <Skeleton isLoaded={!isLoading}>
             <h1 className="font-semibold text-sm">{title}</h1>
           </Skeleton>
         </CardHeader>
         <Divider />
         <CardBody className="flex">
-          <Skeleton isLoaded={isLoaded}>
-            <p className="text-slate-300 text-sm">{datetime} </p>
+          <Skeleton isLoaded={!isLoading}>
+            <p className="text-slate-300 text-sm">{eventDate} </p>
             <p className="text-slate-300 text-sm">
               {location} - {author}
             </p>

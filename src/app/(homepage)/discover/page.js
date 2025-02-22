@@ -2,8 +2,15 @@ import { Button } from "@heroui/react";
 import Link from "next/link";
 import React, { Suspense } from "react";
 import SectionCard from "./_components/sectionCard";
+import { prisma } from "@/utils/prisma";
 
-export default function page() {
+export default async function page() {
+  const data = await prisma.event.findMany({
+    take: 8,
+    include: {
+      author: true,
+    },
+  });
   return (
     <div className="block space-y-10 items-center justify-center p-10">
       <section className="items-center text-center">
@@ -23,20 +30,18 @@ export default function page() {
         </div>
       </section>
       <section className="grid grid-cols-4 gap-5 ">
-        <SectionCard
-          id="1"
-          title="Jakarta | AI-Builder Co-working - 22 Feb"
-          datetime="Today , 06:00 PM "
-          location="Jakarta"
-          author="Ary"
-        />
-        <SectionCard
-          id="1"
-          title="Jakarta | AI-Builder Co-working - 22 Feb"
-          datetime="Today , 06:00 PM "
-          location="Jakarta"
-          author="Ary"
-        />
+        {data.map((event) => {
+          return (
+            <SectionCard
+              id={event.id}
+              title={event.name}
+              datetime={event.eventDate}
+              location={event.place}
+              author={event.author.name}
+              isLoading={false}
+            />
+          );
+        })}
       </section>
     </div>
   );

@@ -22,22 +22,31 @@ export default async function page({ params }) {
       <section className="space-y-2">
         <h1 className="text-2xl font-semibold">{event?.name}</h1>
         <div className="flex space-x-2">
-          <Image />
+          <Image
+            src={"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="}
+            width={100}
+            height={100}
+          />
+
+          <div className="block">
+            <h1 className="text-medium text-slate-500">{event?.description}</h1>
+            <h1 className="text-sm text-slate-500">Event Start {eventDate}</h1>
+            <h1 className="text-sm text-slate-500">
+              Quota : {event?.capacity}
+            </h1>
+            <h1 className="text-sm text-slate-500">
+              Remaining Quota : {event?.capacity - event.participants.length}
+            </h1>
+
+            <h1 className="text-sm text-slate-500">
+              Registered : {event?.participants.length}
+            </h1>
+
+            <h1 className="text-sm text-slate-500">
+              {event?.place} | {event?.author.name} | Posted {createdDate}
+            </h1>
+          </div>
         </div>
-        <h1 className="text-medium text-slate-500">{event?.description}</h1>
-        <h1 className="text-sm text-slate-500">Event Start {eventDate}</h1>
-        <h1 className="text-sm text-slate-500">Quota : {event?.capacity}</h1>
-        <h1 className="text-sm text-slate-500">
-          Remaining Quota : {event?.capacity - event.participants.length}
-        </h1>
-
-        <h1 className="text-sm text-slate-500">
-          Registered : {event?.participants.length}
-        </h1>
-
-        <h1 className="text-sm text-slate-500">
-          {event?.place} | {event?.author.name} | Posted {createdDate}
-        </h1>
       </section>
       <JoinSection id={id} />
     </div>

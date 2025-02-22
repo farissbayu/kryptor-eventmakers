@@ -61,5 +61,5 @@ model Participant {
   
   // relation
   eventId String
-  event Event @relation(fields: [eventId], references: [id])
+  event Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
 }

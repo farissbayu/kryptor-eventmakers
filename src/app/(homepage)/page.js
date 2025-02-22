@@ -4,7 +4,7 @@ import TypedComponent from "./components/typed";
 
 export default async function Page() {
   return (
-    <div>
+    <div className="items-center justify-center p-56 text-center">
       <h1 className="text-5xl font-bold text-gray-900 mb-6">
         <TypedComponent />
       </h1>

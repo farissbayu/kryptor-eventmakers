@@ -10,19 +10,21 @@ export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <div className="flex bg-gray-50 p-4 justify-between">
-      <h1 className="font-semibold text-black text-2xl">.Eventmaker</h1>
+    <div className="flex bg-gray-50 p-1 justify-between sticky top-0 z-50">
+      <h1 className="font-semibold text-black text-2xl ml-1">
+        <Link href={"/"}>.Eventmaker</Link>
+      </h1>
       {!isLogin && (
         <Link
           href="/register"
-          className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold border border-blue-600 hover:bg-blue-50"
+          className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold  hover:bg-blue-50"
         >
           Sign Up
         </Link>
       )}
       {isLogin && (
-        <div>
-          <h1 className="font-semibold text-black text-2xl">
+        <div className="text-sm">
+          <h1 className="font-semibold text-black text-sm">
             {isLogin.data.user.name}
           </h1>
           <form action={formAction}>

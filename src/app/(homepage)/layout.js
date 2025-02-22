@@ -11,7 +11,7 @@ export default async function layout({ children }) {
     <div>
       <Navbar isLogin={isLogin} />
       <div className="flex min-h-screen bg-gray-50">
-        <div className="p-5 mx-auto">{children}</div>
+        <div className="p-5 mx-auto w-full">{children}</div>
       </div>
     </div>
   );

@@ -10,54 +10,22 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SectionCard() {
+export default function SectionCard({ id, title, datetime, location, author }) {
   return (
-    <section className="grid grid-cols-4 gap-5 ">
-      <Link href={"/"}>
-        <Card className="max-w-[500px] shadow-sm">
-          <CardHeader>
-            <h1 className="font-semibold text-sm">
-              Jakarta | AI-Builder Co-working - 22 Feb
-            </h1>
-          </CardHeader>
-          <Divider />
-          <CardBody className="flex">
-            <p className="text-slate-300 text-sm">Today , 06:00 PM </p>
-            <p className="text-slate-300 text-sm">Trinity Tower - Ary P</p>
-          </CardBody>
-          <Divider />
-        </Card>
-      </Link>
-      <Link href={"/"}>
-        <Card className="max-w-[500px] shadow-sm">
-          <CardHeader>
-            <h1 className="font-semibold text-sm">
-              Jakarta | AI-Builder Co-working - 22 Feb
-            </h1>
-          </CardHeader>
-          <Divider />
-          <CardBody className="flex">
-            <p className="text-slate-300 text-sm">Today , 06:00 PM </p>
-            <p className="text-slate-300 text-sm">Trinity Tower - Ary P</p>
-          </CardBody>
-          <Divider />
-        </Card>
-      </Link>
-      <Link href={"/"}>
-        <Card className="max-w-[500px] shadow-sm">
-          <CardHeader>
-            <h1 className="font-semibold text-sm">
-              Jakarta | AI-Builder Co-working - 22 Feb
-            </h1>
-          </CardHeader>
-          <Divider />
-          <CardBody className="flex">
-            <p className="text-slate-300 text-sm">Today , 06:00 PM </p>
-            <p className="text-slate-300 text-sm">Trinity Tower - Ary P</p>
-          </CardBody>
-          <Divider />
-        </Card>
-      </Link>
-    </section>
+    <Link href={`/${id}`}>
+      <Card className="max-w-[500px] shadow-sm">
+        <CardHeader>
+          <h1 className="font-semibold text-sm">{title}</h1>
+        </CardHeader>
+        <Divider />
+        <CardBody className="flex">
+          <p className="text-slate-300 text-sm">{datetime} </p>
+          <p className="text-slate-300 text-sm">
+            {location} - {author}
+          </p>
+        </CardBody>
+        <Divider />
+      </Card>
+    </Link>
   );
 }

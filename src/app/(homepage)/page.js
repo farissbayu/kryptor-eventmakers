@@ -14,13 +14,23 @@ export default async function Page() {
       <p className="text-xl text-gray-600 mb-8">
         Join the best events around you or host your own.
       </p>
-      <div className="space-x-4">
-        <Link
-          href="/discover"
-          className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
-        >
-          Explore Events
-        </Link>
+      <div className="flex flex-col space-y-12">
+        <div className="space-x-4">
+          <Link
+            href="/discover"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700"
+          >
+            Explore Events
+          </Link>
+        </div>
+        <div className="space-x-4">
+          <Link
+            href="/event/create"
+            className="border-2 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:border-blue-700 hover:bg-gray-100 transition-all"
+          >
+            Create Event
+          </Link>
+        </div>
       </div>
     </div>
   );

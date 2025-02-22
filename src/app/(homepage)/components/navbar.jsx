@@ -10,9 +10,11 @@ export default function Navbar({ isLogin }) {
   const pathname = usePathname();
   console.log(pathname);
   return (
-    <div className="flex bg-gray-50 p-1 justify-between sticky top-0 z-50">
+    <div className="flex bg-gray-50 py-2 px-4 justify-between sticky top-0 z-50 border-b-2 border-slate-200">
       <h1 className="font-semibold text-black text-2xl ml-1">
-        <Link href={"/"}>.Eventmaker</Link>
+        <Link href={"/"} className="hover:underline">
+          .Eventmaker
+        </Link>
       </h1>
       {!isLogin && (
         <Link
@@ -24,11 +26,13 @@ export default function Navbar({ isLogin }) {
       )}
       {isLogin && (
         <div className="text-sm">
-          <h1 className="font-semibold text-black text-sm">
+          <p className="font-semibold text-black text-sm">
             {isLogin.data.user.name}
-          </h1>
+          </p>
           <form action={formAction}>
-            <button type="submit">Logout</button>
+            <button type="submit" className="hover:underline">
+              Logout
+            </button>
           </form>
         </div>
       )}

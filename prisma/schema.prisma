@@ -39,12 +39,12 @@ model Event {
   description String
   eventDate DateTime
   createdAt DateTime @default(now())
-  updatedAt DateTime
-  isPublished Boolean
-  isDeleted Boolean
+  updatedAt DateTime @updatedAt
+  isPublished Boolean @default(true)
+  isDeleted Boolean @default(false)
   capacity Int
   place String
-  image String
+  image String?
 
   participants Participant[]
   

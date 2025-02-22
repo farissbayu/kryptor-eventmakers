@@ -1,17 +1,21 @@
 "use client";
 
 import { Button, DatePicker, Input, Textarea } from "@heroui/react";
-import { now, getLocalTimeZone } from "@internationalized/date";
 import { useActionState } from "react";
 import { createEventAction } from "./action";
+import { redirect } from "next/navigation";
 
 export default function Page() {
   const [state, formAction, pending] = useActionState(createEventAction, null);
 
+  if (state?.success) {
+    redirect("/event");
+  }
+
   return (
     <div className="w-full">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-xl font-semibold mb-12">Create new event</h1>
+        <h1 className="text-xl font-semibold mb-4">Create new event</h1>
         <form className="flex flex-col space-y-4" action={formAction}>
           <div className="flex flex-row space-x-4 justify-stretch items-end">
             <Input
@@ -23,14 +27,14 @@ export default function Page() {
               placeholder="Your event name"
               className="basis-128"
             />
-            <DatePicker
-              hideTimeZone
-              defaultValue={now(getLocalTimeZone())}
-              label="Event Date"
-              labelPlacement="outside"
-              variant="bordered"
+            <Input
+              type="datetime-local"
               name="eventDate"
-              className="text-start basis-64"
+              variant="bordered"
+              labelPlacement="outside"
+              label="Event date"
+              className="basis-64"
+              placeholder=" "
             />
             <Input
               type="number"
@@ -74,10 +78,16 @@ export default function Page() {
           <Button
             type="submit"
             className="bg-cyan-700 text-white font-semibold w-48 max-w-64 mx-auto"
+            isDisabled={pending}
           >
             Create
           </Button>
         </form>
+        {state?.success === false && (
+          <p className="text-xs text-red-500 text-center my-2">
+            {state?.message}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 "use server";
-import { prisma } from "@/lib/prisma";
+import { prisma } from "@/utils/prisma";
 
 export default async function checkLogin(sessionId) {
   if (sessionId) {

@@ -1,6 +1,6 @@
 "use server";
 
-import { avatarBaseURL } from "@/app/constants/avatar-url";
+import { avatarBaseURL } from "@/constants/avatar-url";
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
 import { redirect } from "next/navigation";

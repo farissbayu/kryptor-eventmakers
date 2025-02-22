@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import Navbar from "./components/navbar";
-import checkLogin from "../utils/checkSession";
+import checkLogin from "@/utils/checkSession";
 
 export default async function layout({ children }) {
   const cookiesStore = await cookies();

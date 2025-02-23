@@ -20,12 +20,15 @@ export default async function page({ params }) {
   return (
     <div className="block space-y-10 p-10 w-full">
       <section className="space-y-2">
-        <h1 className="text-2xl font-semibold">{event?.name}</h1>
+        <h1 className="text-3xl font-semibold">{event?.name.toUpperCase()}</h1>
         <div className="flex space-x-2">
           <Image
-            src={"data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="}
-            width={100}
-            height={100}
+            key={id}
+            src={`${process.env.R2_BASE_URL}/${id}/${event.image}`}
+            width={400}
+            height={400}
+            alt={event.name}
+            className="rounded"
           />
 
           <div className="block">

@@ -25,15 +25,20 @@ export default function Navbar({ isLogin }) {
         </Link>
       )}
       {isLogin && (
-        <div className="text-sm">
-          <p className="font-semibold text-black text-sm">
-            {isLogin.data.user.name}
-          </p>
-          <form action={formAction}>
-            <button type="submit" className="hover:underline">
-              Logout
-            </button>
-          </form>
+        <div className="flex flex-row space-x-4 items-center">
+          <Link href="/event" className="hover:underline">
+            events
+          </Link>
+          <div className="text-sm">
+            <p className="font-semibold text-black text-sm">
+              {isLogin.data.user.name}
+            </p>
+            <form action={formAction}>
+              <button type="submit" className="hover:underline">
+                Logout
+              </button>
+            </form>
+          </div>
         </div>
       )}
     </div>

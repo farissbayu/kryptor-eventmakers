@@ -28,17 +28,40 @@ export default async function joinAction(_, formData) {
       message: `${email} already Participate`,
     };
   }
-  await prisma.participant.create({
-    data: {
-      name,
-      email,
-      phoneNumber,
-      eventId,
+
+  //prevent full registered
+  const registered = await prisma.participant.aggregate({
+    _count: {
+      id: true,
+    },
+    where: {
+      eventId: eventId,
     },
   });
+  const quota = await prisma.event.findFirst({
+    where: {
+      id: eventId,
+    },
+  });
+
+  if (registered._count.id < quota.capacity) {
+    await prisma.participant.create({
+      data: {
+        name,
+        email,
+        phoneNumber,
+        eventId,
+      },
+    });
+    revalidatePath(`/${eventId}`);
+    return {
+      success: true,
+      message: `${email} Joined to this Event!`,
+    };
+  }
   revalidatePath(`/${eventId}`);
   return {
-    success: true,
-    message: `${email} Joined to this Event!`,
+    success: false,
+    message: `Full Registered!`,
   };
 }

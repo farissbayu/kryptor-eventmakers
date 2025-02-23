@@ -56,7 +56,7 @@ model Event {
 model Participant {
   id String @id @default(cuid())
   name String
-  email String @unique
+  email String
   phoneNumber String
   
   // relation

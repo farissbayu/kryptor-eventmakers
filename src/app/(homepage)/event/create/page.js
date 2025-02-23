@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, DatePicker, Input, Textarea } from "@heroui/react";
+import { Button, Input, Textarea } from "@heroui/react";
 import { useActionState } from "react";
 import { createEventAction } from "./action";
 import { redirect } from "next/navigation";

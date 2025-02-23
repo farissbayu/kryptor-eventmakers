@@ -44,17 +44,21 @@ export default async function Page({ params }) {
       </div>
       <h2 className="text-xl text-center font-semibold my-4">Participants</h2>
       <div>
-        {event.participants.map((participant) => (
-          <div
-            key={participant.id}
-            className="w-full grid grid-cols-4 gap-4 border-b-2 py-2 items-center"
-          >
-            <p>{participant.name}</p>
-            <p>{participant.email}</p>
-            <p>{participant.phoneNumber}</p>
-            <ButtonDeleteParticipant id={participant.id} />
-          </div>
-        ))}
+        {event.participants.length === 0 && (
+          <p className="text-center">No participants yet.</p>
+        )}
+        {event.participants.length > 0 &&
+          event.participants.map((participant) => (
+            <div
+              key={participant.id}
+              className="w-full grid grid-cols-4 gap-4 border-b-2 py-2 items-center"
+            >
+              <p>{participant.name}</p>
+              <p>{participant.email}</p>
+              <p>{participant.phoneNumber}</p>
+              <ButtonDeleteParticipant id={participant.id} />
+            </div>
+          ))}
       </div>
     </div>
   );

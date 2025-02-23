@@ -3,6 +3,8 @@
 import { auth } from "@/libs/auth";
 import { prisma } from "@/utils/prisma";
 import Link from "next/link";
+import { EventItem } from "./_components/event-item";
+import { EventList } from "./_components/event-list";
 
 export default async function Page() {
   const session = await auth();
@@ -15,12 +17,14 @@ export default async function Page() {
     events = await prisma.event.findMany({
       where: {
         authorId: session.userId,
+        isDeleted: false,
+        isPublished: true,
       },
     });
   }
 
   return (
-    <div className="w-full px-4">
+    <div className="w-full px-4 space-y-4">
       <div className="flex flex-row justify-between items-center">
         <h1 className="font-semibold text-lg">{firstName}'s created events.</h1>
         <Link
@@ -30,6 +34,7 @@ export default async function Page() {
           + Create event
         </Link>
       </div>
+      <EventList events={events} />
     </div>
   );
 }

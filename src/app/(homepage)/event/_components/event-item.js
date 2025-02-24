@@ -14,9 +14,9 @@ export const EventItem = ({ event }) => {
         height={400}
         className="w-40 h-32 object-cover rounded-lg"
       />
-      <div className="flex flex-col justify-between w-full">
+      <div className="flex flex-col justify-between w-full min-w-0">
         <div className="flex flex-col space-y-1">
-          <h3 className="text-lg font-semibold">{event.name}</h3>
+          <h3 className="text-lg font-semibold break-words">{event.name}</h3>
           <p className="truncate w-full text-slate-700 text-sm">
             {event.description}
           </p>
